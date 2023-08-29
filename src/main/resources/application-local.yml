@@ -1,0 +1,24 @@
+spring:
+  config:
+    activate:
+      on-profile: local
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:test
+    username: sa
+  jpa:
+    database: h2
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+  sql:
+    init:
+      data-locations: classpath:/sql/local/data.sql
+
+logging:
+  level:
+    org.hibernate.type.descriptor.sql: trace

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>간편장부</title>
+    <link href="https://uicdn.toast.com/grid/latest/tui-grid.css" rel="stylesheet"/>
+    <script src="https://uicdn.toast.com/grid/latest/tui-grid.js"></script>
+</head>
+<body>
+<header>
+    <h1>간편장부</h1>
+</header>
+<article>
+    <div id="grid"></div>
+</article>
+</body>
+<script>
+    const grid = new tui.Grid({
+        el: document.getElementById('grid'),
+        scrollX: false,
+        scrollY: false,
+        columns: [
+            {header: 'ID', name: 'orderId'},
+            {header: '일시', name: 'orderDate'},
+            {header: '거래처', name: 'partnerName'},
+            {header: '금액', name: 'price'},
+            {header: '비고', name: 'note'}
+        ]
+    });
+</script>
+</html>

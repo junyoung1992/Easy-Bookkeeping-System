@@ -1,4 +1,4 @@
-package com.example.easybookkeepingsystem.infrastructure.common;
+package com.example.easybookkeepingsystem.common.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;

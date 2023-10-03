@@ -1,4 +1,4 @@
-package com.example.easybookkeepingsystem.common.config;
+package com.example.easybookkeepingsystem.config.database;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import jakarta.persistence.EntityManager;

@@ -4,7 +4,9 @@ import com.example.easybookkeepingsystem.infrastructure.persistence.BaseEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Version;
 
 import java.math.BigDecimal;
@@ -13,6 +15,7 @@ import java.time.Instant;
 @Getter
 @Entity
 @Table(name = "ORDERS")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class OrderEntity extends BaseEntity {
 
     @Id
@@ -51,4 +54,5 @@ public class OrderEntity extends BaseEntity {
     @NotNull
     @Column(name = "NOTE", nullable = false)
     String note;
+
 }

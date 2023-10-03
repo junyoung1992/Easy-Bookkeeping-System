@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>간편장부</title>
@@ -9,8 +9,11 @@
     <h1>간편장부</h1>
 </header>
 <article>
-    <div id="login">
-        <button su>로그인</button>
+    <div id="login" th:if="${#strings.isEmpty(userId)}">
+        <button th:onclick="|location.href='@{/login}'|" type="button">로그인</button>
+    </div>
+    <div id="logout" th:if="${not #strings.isEmpty(userId)}">
+        <button th:onclick="|location.href='@{/logout}'|" type="button">로그아웃</button>
     </div>
     <div id="signup">
         <p>

@@ -1,4 +1,4 @@
-package com.example.easybookkeepingsystem.common.config;
+package com.example.easybookkeepingsystem.config.database;
 
 import com.example.easybookkeepingsystem.common.properties.RedisProperties;
 import lombok.RequiredArgsConstructor;

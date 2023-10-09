@@ -1,31 +1,65 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>간편장부</title>
     <link href="https://uicdn.toast.com/grid/latest/tui-grid.css" rel="stylesheet"/>
     <script src="https://uicdn.toast.com/grid/latest/tui-grid.js"></script>
+    <script crossorigin="anonymous"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <body>
 <header>
     <h1>간편장부</h1>
 </header>
 <article>
+    <div id="logout">
+        <button th:onclick="|location.href='@{/logout}'|" type="button">로그아웃</button>
+    </div>
     <div id="grid"></div>
 </article>
 </body>
 <script>
+    function init(grid) {
+        const now = new Date();
+        getBookkeepingList(grid, now);
+    }
+
+    function getBookkeepingList(grid, date) {
+        $.ajax({
+            method: "get",
+            url: "/api/v1/bookkeeping/list",
+            data: {
+                "companyId": 1,
+                "year": date.getFullYear(),
+                "month": date.getMonth() + 1,
+            },
+            success: function (data) {
+                if (data.list.length > 0) {
+                    grid.resetData(data.list);
+                }
+            },
+            error: function (request, status, error) {
+                console.log("error=[code:" + status + ",error=" + error + "]");
+            }
+        });
+    }
+
     const grid = new tui.Grid({
-        el: document.getElementById('grid'),
+        el: document.getElementById("grid"),
         scrollX: false,
         scrollY: false,
         columns: [
-            {header: 'ID', name: 'orderId'},
-            {header: '일시', name: 'orderDate'},
-            {header: '거래처', name: 'partnerName'},
-            {header: '금액', name: 'price'},
-            {header: '비고', name: 'note'}
+            {header: "ID", name: "orderId"},
+            {header: "일시", name: "orderDate"},
+            {header: "거래처", name: "partnerName"},
+            {header: "금액", name: "price",},
+            {header: "비고", name: "note"},
         ]
     });
+
+    init(grid);
+
 </script>
 </html>

@@ -1,5 +1,6 @@
 package com.example.easybookkeepingsystem.infrastructure.persistence.member;
 
+import com.example.easybookkeepingsystem.common.enums.Role;
 import com.example.easybookkeepingsystem.infrastructure.persistence.BaseEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -7,7 +8,9 @@ import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
+@SuperBuilder
 @Getter
 @Entity
 @Table(name = "MEMBER")
@@ -32,7 +35,8 @@ public class MemberEntity extends BaseEntity {
     String password;
 
     @NotNull
+    @Enumerated(value = EnumType.STRING)
     @Column(name = "ROLE", nullable = false)
-    String role;
+    Role role;
 
 }

@@ -25,4 +25,6 @@ public class MemberCache {
 
     Role role;
 
+    Long companyId;
+
 }

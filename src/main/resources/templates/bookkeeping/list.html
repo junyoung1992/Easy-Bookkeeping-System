@@ -20,7 +20,7 @@
     <div id="grid"></div>
 </article>
 </body>
-<script>
+<script th:inline="javascript">
     function init(grid) {
         const now = new Date();
         getBookkeepingList(grid, now);
@@ -31,7 +31,7 @@
             method: "get",
             url: "/api/v1/bookkeeping/list",
             data: {
-                "companyId": 1,
+                "companyId": [[${companyId}]],
                 "year": date.getFullYear(),
                 "month": date.getMonth() + 1,
             },

@@ -3,5 +3,5 @@ insert into ORDERS (ID, VERSION, COMPANY_ID, ORDER_DATE, PARTNER_ID, PARTNER_VER
 values (1, 1, 1, NOW(), 2, 1, '파트너', '10000', '비고', NOW(), NOW());
 
 -- ID : admin / password : admin
-insert into MEMBER (ID, VERSION, USERID, PASSWORD, ROLE, CREATED_DATE, MODIFIED_DATE)
-values (1, 1, 'admin', '$2a$10$cTRsozXeaDOI0ZusMhoS1uFYiofVwhaAoSWgbQxR7W6g2ZGYL0bcy', 'ADMIN', NOW(), NOW());
+insert into MEMBER (ID, VERSION, USERID, PASSWORD, ROLE, COMPANYID, CREATED_DATE, MODIFIED_DATE)
+values (1, 1, 'admin', '$2a$10$cTRsozXeaDOI0ZusMhoS1uFYiofVwhaAoSWgbQxR7W6g2ZGYL0bcy', 'ADMIN', 1, NOW(), NOW());

@@ -17,4 +17,5 @@ public class Member {
     String userId;
     String password;
     Role role;
+    Long companyId;
 }

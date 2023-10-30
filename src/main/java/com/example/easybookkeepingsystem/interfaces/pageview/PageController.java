@@ -1,5 +1,6 @@
 package com.example.easybookkeepingsystem.interfaces.pageview;
 
+import com.example.easybookkeepingsystem.config.security.UserSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
@@ -23,8 +24,8 @@ public class PageController {
     }
 
     @GetMapping(path = "/bookkeeping/list")
-    public String bookkeepingListView(Model model) {
-        model.addAttribute("data", "Hello Spring!");
+    public String bookkeepingListView(@AuthenticationPrincipal UserSession user, Model model) {
+        model.addAttribute("companyId", user.getMember().getCompanyId());
         return "/bookkeeping/list";
     }
 

@@ -1,7 +1,7 @@
 package com.example.easybookkeepingsystem.interfaces.bookkeeping;
 
-import com.example.easybookkeepingsystem.common.constants.DateTimeConstants;
 import com.example.easybookkeepingsystem.common.mapper.OrderMapper;
+import com.example.easybookkeepingsystem.common.utils.DateTimeUtils;
 import com.example.easybookkeepingsystem.domain.order.Order;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AccessLevel;
@@ -31,7 +31,7 @@ public class BookkeepingResponse {
     public static class Bookkeeping {
         Long orderId;
         Long orderVersion;
-        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DateTimeConstants.PATTERN_yyyyMMddHHmmss, timezone = DateTimeConstants.KST)
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DateTimeUtils.PATTERN_DISPLAY_DATETIME, timezone = DateTimeUtils.KST)
         Instant orderDate;
         Long partnerId;
         Long partnerVersion;

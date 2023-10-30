@@ -3,7 +3,6 @@ package com.example.easybookkeepingsystem.config.security;
 import com.example.easybookkeepingsystem.application.MemberService;
 import com.example.easybookkeepingsystem.domain.member.Member;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -18,12 +17,7 @@ public class CustomUserDetailService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
         Member member = memberService.getMemberForAuth(userId);
-
-        return User.builder()
-                .username(member.getUserId())
-                .password(member.getPassword())
-                .roles(member.getRole().name())
-                .build();
+        return new UserSession(member);
     }
 
 }

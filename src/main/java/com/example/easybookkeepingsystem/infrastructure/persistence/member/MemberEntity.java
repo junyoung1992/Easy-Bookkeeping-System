@@ -39,4 +39,8 @@ public class MemberEntity extends BaseEntity {
     @Column(name = "ROLE", nullable = false)
     Role role;
 
+    @NotNull
+    @Column(name = "COMPANYID", nullable = false)
+    Long companyId;
+
 }

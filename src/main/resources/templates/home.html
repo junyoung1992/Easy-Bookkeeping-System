@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>간편장부</title>
+</head>
+<body>
+<header>
+    <h1>간편장부</h1>
+</header>
+<article>
+    <div id="login" th:if="${#strings.isEmpty(userId)}">
+        <button th:onclick="|location.href='@{/login}'|" type="button">로그인</button>
+    </div>
+    <div id="logout" th:if="${not #strings.isEmpty(userId)}">
+        <button th:onclick="|location.href='@{/logout}'|" type="button">로그아웃</button>
+    </div>
+    <div id="signup">
+        <p>
+            <em>회원가입은 관리자에게 문의하기 바랍니다.</em>
+        </p>
+    </div>
+    <div id="bookkepping">
+        <button onclick="location.href='/bookkeeping/list'">간편장부</button>
+    </div>
+</article>
+<footer>
+</footer>
+</body>
+</html>

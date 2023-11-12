@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>거래처 목록</title>
+    <link href="https://uicdn.toast.com/grid/latest/tui-grid.css" rel="stylesheet"/>
+    <script src="https://uicdn.toast.com/grid/latest/tui-grid.js"></script>
+    <script crossorigin="anonymous"
+            integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+            src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+<header>
+    <h1>거래처 목록</h1>
+</header>
+<article>
+    <div id="register">
+        <button th:onclick="|location.href='@{/partner/register}'|" type="button">등록</button>
+    </div>
+    <div id="grid"></div>
+</article>
+</body>
+<script th:inline="javascript">
+    function init(grid) {
+        getPartnerList(grid);
+    }
+
+    function getPartnerList(grid) {
+        $.ajax({
+            method: "get",
+            url: "/api/v1/partner/list",
+            data: {
+                "companyId": [[${companyId}]],
+            },
+            success: function (data) {
+                if (data.list.length > 0) {
+                    grid.resetData(data.list);
+                }
+            },
+            error: function (request, status, error) {
+                console.log("error=[code:" + status + ",error=" + error + "]");
+            }
+        });
+    }
+
+    const grid = new tui.Grid({
+        el: document.getElementById("grid"),
+        scrollX: false,
+        scrollY: false,
+        columns: [
+            {header: "ID", name: "partnerId"},
+            {header: "거래처", name: "partnerName"},
+            {header: "사업자등록번호", name: "taxId",},
+            {header: "등록일자", name: "createdDate"},
+            {header: "수정일자", name: "modifiedDate"},
+        ]
+    });
+
+    init(grid);
+
+</script>
+</html>

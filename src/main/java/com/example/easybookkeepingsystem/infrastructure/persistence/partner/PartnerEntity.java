@@ -1,4 +1,4 @@
-package com.example.easybookkeepingsystem.infrastructure.persistence.company;
+package com.example.easybookkeepingsystem.infrastructure.persistence.partner;
 
 import com.example.easybookkeepingsystem.infrastructure.persistence.BaseEntity;
 import jakarta.persistence.*;
@@ -12,9 +12,9 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @Getter
 @Entity
-@Table(name = "COMPANY")
+@Table(name = "PARTNER")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class CompanyEntity extends BaseEntity {
+public class PartnerEntity extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -26,11 +26,15 @@ public class CompanyEntity extends BaseEntity {
     Long version;
 
     @NotBlank
-    @Column(name = "COMPANYNAME", nullable = false)
-    String companyName;
+    @Column(name = "PARTNERNAME", nullable = false)
+    String partnerName;
 
     @NotNull
     @Column(name = "TAXID", nullable = false)
     Long taxId;
+
+    @NotNull
+    @Column(name = "COMPANYID", nullable = false)
+    Long companyId;
 
 }

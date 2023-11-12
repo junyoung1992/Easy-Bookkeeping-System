@@ -1,4 +1,4 @@
-package com.example.easybookkeepingsystem.interfaces.pageview;
+package com.example.easybookkeepingsystem.interfaces.auth;
 
 import com.example.easybookkeepingsystem.domain.member.LoginForm;
 import lombok.RequiredArgsConstructor;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 @RequiredArgsConstructor
-public class AuthController {
+public class LoginController {
 
     @GetMapping(path = "/login")
     public String loginFormView(@ModelAttribute("loginForm") LoginForm form) {

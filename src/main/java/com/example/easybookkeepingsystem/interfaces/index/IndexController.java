@@ -1,6 +1,5 @@
-package com.example.easybookkeepingsystem.interfaces.pageview;
+package com.example.easybookkeepingsystem.interfaces.index;
 
-import com.example.easybookkeepingsystem.config.security.UserSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
@@ -12,7 +11,7 @@ import java.util.Objects;
 
 @Controller
 @RequiredArgsConstructor
-public class PageController {
+public class IndexController {
 
     @GetMapping(path = "/")
     public String indexView(@AuthenticationPrincipal User user, Model model) {
@@ -21,12 +20,6 @@ public class PageController {
         }
 
         return "/home";
-    }
-
-    @GetMapping(path = "/bookkeeping/list")
-    public String bookkeepingListView(@AuthenticationPrincipal UserSession user, Model model) {
-        model.addAttribute("companyId", user.getMember().getCompanyId());
-        return "/bookkeeping/list";
     }
 
 }

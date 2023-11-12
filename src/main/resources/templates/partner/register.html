@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>거래처 등록</title>
+</head>
+<body>
+<header>
+    <h1>거래처 등록</h1>
+</header>
+<article>
+    <div id="partner">
+        <form method="post" th:action="@{/partner/register}" th:object="${partnerForm}">
+            <div>
+                <label for="companyName">거래처명</label>
+                <input autofocus id="companyName" name="companyName" placeholder="거래처명" required
+                       th:field="*{partnerName}" type="text">
+            </div>
+            <div>
+                <label for="taxId">사업자등록번호</label>
+                <input id="taxId" name="taxId" placeholder="사업자등록번호" required th:field="*{taxId}" type="text">
+            </div>
+            <button type="submit">저장</button>
+        </form>
+    </div>
+</article>
+<footer>
+</footer>
+</body>
+</html>

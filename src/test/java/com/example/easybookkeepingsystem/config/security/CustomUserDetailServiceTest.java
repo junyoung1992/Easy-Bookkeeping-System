@@ -1,6 +1,6 @@
 package com.example.easybookkeepingsystem.config.security;
 
-import com.example.easybookkeepingsystem.application.MemberService;
+import com.example.easybookkeepingsystem.application.MemberUseCase;
 import com.example.easybookkeepingsystem.common.enums.Role;
 import com.example.easybookkeepingsystem.domain.member.Member;
 import org.junit.jupiter.api.DisplayName;
@@ -21,7 +21,7 @@ import static org.mockito.BDDMockito.given;
 class CustomUserDetailServiceTest {
 
     @Mock
-    MemberService memberService;
+    MemberUseCase memberUseCase;
 
     @InjectMocks
     CustomUserDetailService customUserDetailService;
@@ -45,7 +45,7 @@ class CustomUserDetailServiceTest {
                     .role(role)
                     .build();
 
-            given(memberService.getMemberForAuth(userId)).willReturn(member);
+            given(memberUseCase.getMemberForAuth(userId)).willReturn(member);
 
             // when
             UserDetails actual = customUserDetailService.loadUserByUsername(userId);
@@ -61,7 +61,7 @@ class CustomUserDetailServiceTest {
         void noFoundData() {
             // given
             String userId = "admin";
-            given(memberService.getMemberForAuth(userId)).willThrow(new UsernameNotFoundException("존재하지 않는 회원입니다."));
+            given(memberUseCase.getMemberForAuth(userId)).willThrow(new UsernameNotFoundException("존재하지 않는 회원입니다."));
 
             // when - exception
             assertThatThrownBy(() -> customUserDetailService.loadUserByUsername(userId))

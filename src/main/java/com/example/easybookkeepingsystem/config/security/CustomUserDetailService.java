@@ -1,6 +1,6 @@
 package com.example.easybookkeepingsystem.config.security;
 
-import com.example.easybookkeepingsystem.application.MemberService;
+import com.example.easybookkeepingsystem.application.MemberUseCase;
 import com.example.easybookkeepingsystem.domain.member.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -12,11 +12,11 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class CustomUserDetailService implements UserDetailsService {
 
-    private final MemberService memberService;
+    private final MemberUseCase memberUseCase;
 
     @Override
     public UserDetails loadUserByUsername(String userId) throws UsernameNotFoundException {
-        Member member = memberService.getMemberForAuth(userId);
+        Member member = memberUseCase.getMemberForAuth(userId);
         return new UserSession(member);
     }
 

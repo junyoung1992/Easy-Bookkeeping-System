@@ -1,6 +1,6 @@
 package com.example.easybookkeepingsystem.application.impl;
 
-import com.example.easybookkeepingsystem.application.MemberService;
+import com.example.easybookkeepingsystem.application.MemberUseCase;
 import com.example.easybookkeepingsystem.domain.member.Member;
 import com.example.easybookkeepingsystem.domain.member.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class MemberServiceImpl implements MemberService {
+public class MemberServiceImpl implements MemberUseCase {
 
     private final MemberRepository memberRepository;
 
